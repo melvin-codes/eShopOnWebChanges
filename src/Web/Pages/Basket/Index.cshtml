@@ -36,7 +36,7 @@
                             <section class="esh-basket-item esh-basket-item--middle col-xs-2">$ @item.UnitPrice.ToString("N2")</section>
                             <section class="esh-basket-item esh-basket-item--middle col-xs-2">
                                 <input type="hidden" name="@("Items[" + i + "].Id")" value="@item.Id" />
-                                <input type="number" class="esh-basket-input" min="0" name="@("Items[" + i + "].Quantity")" value="@item.Quantity" />
+                                <input type="number" class="esh-basket-input" min="0" name="@("Items[" + i + "].Quantity")" value="@item.Quantity" id="quantityValues" />
                             </section>
                             <section class="esh-basket-item esh-basket-item--middle esh-basket-item--mark col-xs-2">$ @Math.Round(item.Quantity * item.UnitPrice, 2).ToString("N2")</section>
                         </div>
@@ -61,11 +61,20 @@
                         <section class="esh-basket-item col-xs-7"></section>
                     </article>
                 </div>
+                
+                    
+                   
                 <div class="row">
-                    <section class="esh-basket-item col-xs-1">
-                        <a asp-page="/Index" class="btn esh-basket-checkout text-white">[ Continue Shopping ]</a>
+                    <section class="esh-basket-item col-xs-6">
+
+                        <button class="btn esh-basket-checkout-empty" name="deletebutton"
+                            asp-page-handler="Delete">
+                            [ Remove All ]
+                        </button>
+                        <a asp-page="/Index" class="btn esh-basket-checkout">[ Continue Shopping ]</a>
                     </section>
-                    <section class="esh-basket-item col-xs-push-7 col-xs-4">
+                    
+                    <section class="esh-basket-item col-xs-push-2 col-xs-4">
 
                         <button class="btn esh-basket-checkout" name="updatebutton" value="" type="submit"
                                 asp-page-handler="Update">
@@ -74,6 +83,7 @@
                         <a asp-page="./Checkout" class="btn esh-basket-checkout">[ Checkout ]</a>
                     </section>
                 </div>
+                
             </div>
         </form>
     }
@@ -83,7 +93,7 @@
             Basket is empty.
         </h3>
 
-        <section class="esh-basket-item">
+        <section class="esh-basket-item col-xs-pull-1">
             <a asp-page="/Index" class="btn esh-basket-checkout text-white">[ Continue Shopping ]</a>
         </section>
     }
